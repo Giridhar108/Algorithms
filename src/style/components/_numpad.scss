@@ -1,0 +1,56 @@
+.numpad {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 24px;
+
+  &__keys {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 250px;
+    height: auto;
+    overflow: hidden;
+
+    button {
+      cursor: pointer;
+
+      width: 66px;
+      height: 36px;
+
+      background: white;
+      border-radius: 3px;
+      border: none;
+      -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+      -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+      box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+
+      margin: 0 7px 15px 7px;
+
+      color: #888;
+      line-height: 36px;
+      text-align: center;
+
+      user-select: none;
+
+      transition: $transition;
+    }
+
+    button:hover {
+      background: $bg;
+      box-shadow: 0px 4px $bg;
+      -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+      -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+      box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+      color: white;
+    }
+
+    button:active {
+      box-shadow: 0px 0px $bg;
+      -webkit-box-shadow: 0 $bg;
+      -moz-box-shadow: 0 $bg;
+      box-shadow: 0 $bg;
+      top: 4px;
+    }
+  }
+}

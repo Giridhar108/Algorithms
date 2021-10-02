@@ -1,0 +1,57 @@
+.info {
+  display: flex;
+  justify-content: space-between;
+
+  &__budget {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__budget-title {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  &__budget-value {
+    overflow: hidden;
+    max-width: 250px;
+    margin-top: 24px;
+    font-size: 36px;
+    line-height: 36px;
+    text-overflow: ellipsis;
+  }
+
+  &__budget-error {
+    overflow: hidden;
+    max-width: 250px;
+    margin-top: 24px;
+    font-size: 16px;
+    line-height: 36px;
+    text-overflow: ellipsis;
+    color: crimson;
+  }
+
+  &__balance {
+    text-align: center;
+  }
+
+
+
+  &__balance-all {
+    margin-top: 12px;
+    transition: $transition;
+  }
+
+  &__balance-list {
+    margin-top: 2px;
+    line-height: 20px;
+    transition: $transition;
+  }
+
+  &__balance-all.hidden,
+  &__balance-list.hidden {
+    opacity: 0;
+    transition: $transition;
+  }
+}
