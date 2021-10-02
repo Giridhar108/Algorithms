@@ -1,5 +1,5 @@
 import React, { Dispatch, useEffect } from "react";
-import useEnterPress from "../hooks/useEnterPress";
+import useKeyPress from "../hooks/useKeyPress";
 import { UseFormField } from "../hooks/useFormField";
 import { Iinput } from "../types/Iinput";
 
@@ -39,7 +39,7 @@ function Input({
     console.log(input.value);
   };
 
-  useEnterPress(input);
+  
 
   return (
     <div className="input">

@@ -1,4 +1,4 @@
-import React, { Dispatch, useState } from "react";
+import React, { useState } from "react";
 import { Inumpad } from "../types/Inumpad";
 
 function Numpad({ setNumbersNumpad, setDeleteNum }: Inumpad) {
@@ -7,6 +7,7 @@ function Numpad({ setNumbersNumpad, setDeleteNum }: Inumpad) {
     setstate({ value, status: !state.status });
     setNumbersNumpad({ value, status: !state.status });
   };
+
   return (
     <div className="numpad">
       <div className="numpad__keys">

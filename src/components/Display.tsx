@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useKeyPress from "../hooks/useKeyPress";
 import Info from "./Info";
 import Input from "./Input";
 import Numpad from "./Numpad";
@@ -11,6 +12,8 @@ function Display() {
     status: boolean;
   }>({ value: "", status: true });
   const [deleteNum, setDeleteNum] = useState(false);
+
+  useKeyPress(numbers);
 
   return (
     <div className="display">
@@ -25,7 +28,10 @@ function Display() {
           setDeleteNum={setDeleteNum}
         />
       </div>
-      <Numpad setNumbersNumpad={setNumbersNumpad} setDeleteNum={setDeleteNum} />
+      <Numpad
+        setNumbersNumpad={setNumbersNumpad}
+        setDeleteNum={setDeleteNum}
+      />
     </div>
   );
 }
