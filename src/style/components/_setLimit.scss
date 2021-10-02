@@ -1,0 +1,20 @@
+#portal {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.setLimit {
+  width: 90px;
+  height: 45px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: $bggrey;
+
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  cursor: pointer;
+
+  border: none;
+}

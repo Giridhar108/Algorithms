@@ -1,5 +1,5 @@
-export const variantsLimit = {
-  1: {
+export const variantsLimit = [
+  {
     5000: 100,
     2000: 400,
     1000: 1000,
@@ -8,7 +8,7 @@ export const variantsLimit = {
     100: 8000,
     50: 10000,
   },
-  2: {
+  {
     5000: 476,
     2000: 345,
     1000: 6741,
@@ -17,7 +17,7 @@ export const variantsLimit = {
     100: 1643,
     50: 3450,
   },
-  3: {
+  {
     5000: 234,
     2000: 678,
     1000: 845,
@@ -26,7 +26,7 @@ export const variantsLimit = {
     100: 2345,
     50: 234,
   },
-  4: {
+  {
     5000: 546,
     2000: 562,
     1000: 2543,
@@ -35,7 +35,7 @@ export const variantsLimit = {
     100: 124,
     50: 342,
   },
-  5: {
+  {
     5000: 2732,
     2000: 347,
     1000: 479,
@@ -44,7 +44,7 @@ export const variantsLimit = {
     100: 1257,
     50: 3854,
   },
-  6: {
+  {
     5000: 73,
     2000: 147,
     1000: 279,
@@ -53,4 +53,4 @@ export const variantsLimit = {
     100: 857,
     50: 854,
   },
-};
+];

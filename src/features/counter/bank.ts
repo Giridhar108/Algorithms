@@ -1,12 +1,11 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState, AppThunk } from "../../app/store";
+import { createSlice } from "@reduxjs/toolkit";
 import { variantsLimit } from "../../data/variantsLimit";
 import getLimits from "../../helpers/getLimits";
 
 interface Ibank {
   limits: {};
   balance: number;
-  variantsLimit: {};
+  variantsLimit: any[];
   status: string;
 }
 
@@ -22,26 +21,30 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {
     setLimitsDefault: (state: any) => {
-      state.limits = state.variantsLimit[`${2}`];
+      state.limits = state.variantsLimit[0];
       state.balance = Object.entries(state.limits).reduce(
         (acc, el: any) => acc + el[1] * el[0],
         0
       );
     },
     setLimitCustom: (state: any, action) => {
-      state.limits = state.variantsLimit[`${action.payload.number}`];
+      state.limits = state.variantsLimit[action.payload.number];
+      state.balance = Object.entries(state.limits).reduce(
+        (acc, el: any) => acc + el[1] * el[0],
+        0
+      );
     },
     countLimits: (state, action) => {
       state.balance = Object.entries(state.limits).reduce(
         (acc, el: any) => acc + el[1] * el[0],
         0
       );
-      console.log(action.payload.number % 50);
       if (action.payload.number > state.balance) {
         state.status = "нет столько денег";
       } else if (action.payload.number % 50 !== 0) {
         state.status = "вводите суммы кратные 50";
       } else {
+        console.log("act");
         state.status = "ok";
         state.limits = {
           ...state.limits,

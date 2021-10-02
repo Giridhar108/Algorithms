@@ -1,0 +1,80 @@
+.modal {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+
+  &__content {
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #fff;
+    width: 300px;
+    height: auto;
+    transform: scale(0.5);
+    transition: 0.4s all;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__balance {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  &__btn {
+    width: 110px;
+    height: 40px;
+    margin-top: 12px;
+    margin-left: 30px;
+
+    font-size: 18px;
+    line-height: 26px;
+
+    border-radius: 3px;
+    letter-spacing: 1px;
+    background: $bg;
+    border: none;
+    cursor: pointer;
+
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+
+    transition: $transition;
+  }
+
+  &__btn:hover {
+    box-shadow: 0px 4px $bg;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  &__btn:active {
+    box-shadow: 0px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 rgba(0, 0, 0, 0.2);
+    top: 4px;
+  }
+}
+
+.modal.hidden {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal__content.hidden {
+  transform: scale(1);
+}
