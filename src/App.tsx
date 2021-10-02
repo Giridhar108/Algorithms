@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch } from "./app/hooks";
 import Display from "./components/Display";
-import EventsPortal from "./components/eventsPortal";
+import ModalVariantsList from "./components/ModalVariantsList";
 import { setLimitsDefault } from "./features/counter/bank";
 import "./style/index.scss";
 
@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <Display />
-      <EventsPortal active={active} setActive={setActive} />
+      <ModalVariantsList active={active} setActive={setActive} />
     </div>
   );
 }

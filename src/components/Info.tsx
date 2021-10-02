@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useAppSelector } from "../app/hooks";
-
-interface Iinfo {
-  numbers: number | string;
-  openInfo: boolean;
-}
+import { formatPrice } from "../helpers/formatPrice";
+import { Iinfo } from "../types/Iinfo";
 
 function Info({ numbers, openInfo }: Iinfo) {
   const { limits, balance, status } = useAppSelector((state) => state.bank);
@@ -16,7 +13,7 @@ function Info({ numbers, openInfo }: Iinfo) {
         {Number.isNaN(numbers) ? (
           <p className="info__budget-error">Вводите только цифры</p>
         ) : (
-          <p className="info__budget-value">{numbers}</p>
+          <p className="info__budget-value">{formatPrice(+numbers)}</p>
         )}
         {status !== "ok" ? (
           <p className="info__budget-status">{status}</p>
@@ -30,7 +27,7 @@ function Info({ numbers, openInfo }: Iinfo) {
             openInfo ? "info__balance-all" : "info__balance-all hidden"
           }
         >
-          Баланс: {balance}
+          Баланс: {formatPrice(balance)} р
         </div>
         <ul
           className={

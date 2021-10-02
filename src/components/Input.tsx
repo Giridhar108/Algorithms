@@ -1,9 +1,9 @@
-import React, { Dispatch, useEffect } from "react";
-import useKeyPress from "../hooks/useKeyPress";
+import React from "react";
 import { UseFormField } from "../hooks/useFormField";
 import { Iinput } from "../types/Iinput";
 import { useAppDispatch } from "../app/hooks";
 import { countLimits } from "../features/counter/bank";
+import useChangeInputNumber from "../hooks/useChangeInputNumber";
 
 function Input({
   setNumbers,
@@ -17,25 +17,16 @@ function Input({
 
   const input = UseFormField();
 
-  useEffect(() => {
-    input.setValue(`${input.value}${numbersNumpad.value}`);
-    setNumbers(+input.value);
-  }, [numbersNumpad.status]);
-
-  useEffect(() => {
-    if (deleteNum) {
-      input.setValue(`${input.value}`.slice(0, -1));
-      setDeleteNum(false);
-      setNumbers(+input.value);
-    }
-  }, [deleteNum]);
-
-  useEffect(() => {
-    setNumbers(+input.value);
-  }, [input.value]);
+  useChangeInputNumber({
+    numbersNumpad,
+    deleteNum,
+    input,
+    setNumbers,
+    setDeleteNum,
+  });
 
   const handleOpenInfo = () => {
-    setOpenInfo(!openInfo);
+    setOpenInfo!(!openInfo);
   };
 
   const handleSubmit = (e: React.FormEvent) => {

@@ -1,13 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { variantsLimit } from "../../data/variantsLimit";
 import getLimits from "../../helpers/getLimits";
-
-interface Ibank {
-  limits: {};
-  balance: number;
-  variantsLimit: any[];
-  status: string;
-}
+import { Ibank } from "../../types/IBank";
 
 const initialState: Ibank = {
   limits: {},

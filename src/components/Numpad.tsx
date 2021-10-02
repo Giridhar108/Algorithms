@@ -3,6 +3,7 @@ import { Inumpad } from "../types/Inumpad";
 
 function Numpad({ setNumbersNumpad, setDeleteNum }: Inumpad) {
   const [state, setstate] = useState<any>({ value: "", status: true });
+
   const handleSetState = (value: number | string) => {
     setstate({ value, status: !state.status });
     setNumbersNumpad({ value, status: !state.status });

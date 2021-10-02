@@ -3,11 +3,7 @@ import ReactDOM from "react-dom";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { setLimitCustom } from "../features/counter/bank";
 import { formatPrice } from "../helpers/formatPrice";
-
-interface IEventsPortal {
-  active: boolean;
-  setActive: Dispatch<React.SetStateAction<boolean>>;
-}
+import { IEventsPortal } from "../types/IEventsPortal";
 
 function EventsPortal({ active, setActive }: IEventsPortal) {
   const dispatch = useAppDispatch();
