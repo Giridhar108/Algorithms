@@ -2,6 +2,8 @@ import React, { Dispatch, useEffect } from "react";
 import useKeyPress from "../hooks/useKeyPress";
 import { UseFormField } from "../hooks/useFormField";
 import { Iinput } from "../types/Iinput";
+import { useAppDispatch } from "../app/hooks";
+import { countLimits } from "../features/counter/bank";
 
 function Input({
   setNumbers,
@@ -11,6 +13,8 @@ function Input({
   deleteNum,
   setDeleteNum,
 }: Iinput) {
+  const dispatch = useAppDispatch();
+
   const input = UseFormField();
 
   useEffect(() => {
@@ -36,10 +40,9 @@ function Input({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    dispatch(countLimits({ number: +input.value }));
     console.log(input.value);
   };
-
-  
 
   return (
     <div className="input">

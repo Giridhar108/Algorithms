@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 
 function useKeyPress(numbers: any) {
   const onKeypress = (e: any) => {
-    console.log(e);
     if (e.charCode === 13) {
       e.preventDefault();
       console.log(numbers);

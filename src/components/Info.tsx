@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAppSelector } from "../app/hooks";
 
 interface Iinfo {
   numbers: number | string;
@@ -6,6 +7,8 @@ interface Iinfo {
 }
 
 function Info({ numbers, openInfo }: Iinfo) {
+  const { limits, balance, status } = useAppSelector((state) => state.bank);
+
   return (
     <div className="info">
       <div className="info__budget">
@@ -15,6 +18,11 @@ function Info({ numbers, openInfo }: Iinfo) {
         ) : (
           <p className="info__budget-value">{numbers}</p>
         )}
+        {status !== "ok" ? (
+          <p className="info__budget-status">{status}</p>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="info__balance">
         <div
@@ -22,20 +30,21 @@ function Info({ numbers, openInfo }: Iinfo) {
             openInfo ? "info__balance-all" : "info__balance-all hidden"
           }
         >
-          Всего: 10000000000
+          Баланс: {balance}
         </div>
         <ul
           className={
             openInfo ? "info__balance-list" : "info__balance-list hidden"
           }
         >
-          <li>5000р: 100</li>
-          <li>2000р: 400</li>
-          <li>1000р: 1000</li>
-          <li>500р: 3000</li>
-          <li>200р: 5000</li>
-          <li>100р: 8000</li>
-          <li>50р: 10000</li>
+          {limits &&
+            Object.entries(limits).map((el, i) => {
+              return (
+                <li key={`${el[0]}`}>
+                  {el[0]}р: {el[1]}
+                </li>
+              );
+            })}
         </ul>
       </div>
     </div>

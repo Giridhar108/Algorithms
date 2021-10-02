@@ -3,6 +3,7 @@
   justify-content: space-between;
 
   &__budget {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,11 +33,17 @@
     color: crimson;
   }
 
-  &__balance {
-    text-align: center;
+  &__budget-status {
+    position: absolute;
+    width: 170px;
+    bottom: 0;
+    color: crimson;
   }
 
-
+  &__balance {
+    width: 140px;
+    text-align: center;
+  }
 
   &__balance-all {
     margin-top: 12px;
