@@ -13,7 +13,7 @@ function Info({ numbers, openInfo }: Iinfo) {
         {Number.isNaN(numbers) ? (
           <p className="info__budget-error">Вводите только цифры</p>
         ) : (
-          <p className="info__budget-value">{formatPrice(+numbers)}</p>
+          <p className="info__budget-value">{numbers}</p>
         )}
         {status !== "ok" ? (
           <p className="info__budget-status">{status}</p>
@@ -22,11 +22,7 @@ function Info({ numbers, openInfo }: Iinfo) {
         )}
       </div>
       <div className="info__balance">
-        <div
-          className={
-            openInfo ? "info__balance-all" : "info__balance-all hidden"
-          }
-        >
+        <div className="info__balance-all">
           Баланс: {formatPrice(balance)} р
         </div>
         <ul

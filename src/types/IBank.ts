@@ -1,6 +1,7 @@
 export interface Ibank {
-  limits: {};
+  limits: any;
   balance: number;
+  delivery: any[]
   variantsLimit: any[];
   status: string;
 }

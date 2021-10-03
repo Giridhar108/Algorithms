@@ -1,4 +1,4 @@
-import React, { Dispatch, useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { setLimitCustom } from "../features/counter/bank";

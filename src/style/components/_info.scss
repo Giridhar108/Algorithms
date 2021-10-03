@@ -41,13 +41,12 @@
   }
 
   &__balance {
-    width: 140px;
+    width: 160px;
     text-align: center;
   }
 
   &__balance-all {
-    margin-top: 12px;
-    transition: $transition;
+    width: 160px;
   }
 
   &__balance-list {
