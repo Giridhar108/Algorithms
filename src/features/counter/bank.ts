@@ -41,13 +41,14 @@ export const counterSlice = createSlice({
         state.status = "вводите суммы кратные 50";
       } else {
         const resultLimit = getLimits(action.payload.number, state.limits);
-        console.log(resultLimit)
+
         state.delivery = resultLimit && Object.entries(resultLimit).reduce((acc: any, el: any) => {
           if (state.limits[`${el[0]}`] !== el[1]) {
             return [...acc, [el[0], state.limits[`${el[0]}`] - el[1]]]
           }
           return acc
         }, [])
+
         state.status = "ok";
         state.limits = {
           ...state.limits,
