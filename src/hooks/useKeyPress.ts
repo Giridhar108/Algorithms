@@ -9,7 +9,6 @@ function useKeyPress(numbers: any) {
     if (e.charCode === 13) {
       e.preventDefault();
       dispatch(countLimits({ number: +numbers }));
-      console.log(numbers);
     }
   };
 

@@ -32,7 +32,6 @@ function Input({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(countLimits({ number: +input.value }));
-    console.log(input.value);
   };
 
   return (
