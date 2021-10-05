@@ -1,45 +1,47 @@
 function getLimits(ammountRequired: number, limits: any) {
-  let nominals = Object.keys(limits)
+  const nominals = Object.keys(limits)
     .map(Number)
     .sort((a, b) => b - a)
-    .filter((el) => ammountRequired > el);
+    .filter((el) => ammountRequired >= el);
 
   function proportion(
-    sum: number,
+    ammount: number,
     lim: []
-  ): { limitsPercent: any; allLimit: number; status?: boolean } {
-    const newLimit: any = nominals.reduce((acc: any, el: any) => {
-      if (sum < el) {
-        return acc;
-      }
-      return { ...acc, [`${el}`]: lim[el] };
-    }, {});
+  ): { limitsPercent: any; allLimitInBank: number; notEnough?: boolean } {
 
-    const allSum = Object.entries(newLimit).reduce(
+    const filteredLimit: any = nominals.reduce(
+      (acc: any, el: any) =>
+        ammount < el ? acc : { ...acc, [`${el}`]: lim[el] },
+      {}
+    );
+
+    const allAmmountInBank = Object.entries(filteredLimit).reduce(
       (acc: number, el: any) => acc + el[1] * el[0],
       0
     );
-    const percentNeed = sum / (allSum / 100);
-    let status = true;
-    if (sum > allSum) {
-      status = false;
+
+    const percentNeed = ammount / (allAmmountInBank / 100);
+
+    let notEnough = false;
+    if (ammount > allAmmountInBank) {
+      notEnough = true;
     }
 
-    const allLimit =
-      Object.values(newLimit).reduce((acc: number, el: any) => acc + el, 0) *
+    const allLimitInBank =
+      Object.values(filteredLimit).reduce((acc: number, el: any) => acc + el, 0) *
       (percentNeed / 100);
     const onePercentAll =
-      Object.values(newLimit).reduce((acc: number, el: any) => acc + el, 0) /
+      Object.values(filteredLimit).reduce((acc: number, el: any) => acc + el, 0) /
       100;
 
     const limitsPercent = nominals.reduce((acc: {}, el: number) => {
-      if (newLimit[el] !== undefined) {
-        acc = { ...acc, [`${el}`]: newLimit[el] / onePercentAll };
+      if (filteredLimit[el] !== undefined) {
+        acc = { ...acc, [`${el}`]: filteredLimit[el] / onePercentAll };
       }
       return acc;
     }, {});
 
-    return { limitsPercent, allLimit: allLimit, status };
+    return { limitsPercent, allLimitInBank: allLimitInBank, notEnough };
   }
 
   function collect(
@@ -47,22 +49,22 @@ function getLimits(ammountRequired: number, limits: any) {
     nominals: any,
     {
       limitsPercent,
-      allLimit,
-      status,
-    }: { limitsPercent: any; allLimit: number; status?: boolean }
+      allLimitInBank,
+      notEnough,
+    }: { limitsPercent: any; allLimitInBank: number; notEnough?: boolean }
   ): any {
-    if (amount === 0) return {};
+    if (notEnough) return;
     if (!nominals.length) return;
-    if (!status) return;
+    if (amount === 0) return {};
 
     let currentNominal = nominals[0];
     let limitPercent = limitsPercent[currentNominal];
 
-    for (let i = Math.ceil((allLimit / 100) * limitPercent); i >= 0; i--) {
+    for (let i = Math.ceil((allLimitInBank / 100) * limitPercent); i >= 0; i--) {
       let result = collect(amount - i * currentNominal, nominals.slice(1), {
         limitsPercent,
-        allLimit,
-        status,
+        allLimitInBank,
+        notEnough,
       });
 
       if (result) {
